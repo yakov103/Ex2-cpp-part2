@@ -6,19 +6,19 @@
 #include "Direction.hpp"
 #include <string>
 #include <stdexcept>
-
+using namespace std;
 
 namespace ariel {
     class Notebook {
     public :
-        Notebook(); // constractor
-        void write(unsigned int page, unsigned int row, unsigned int col, Direction dir, std::string str);
+         // constructor
+        void write(unsigned int page, unsigned int row, unsigned int col, Direction dir, string str);
 
-        void erase(unsigned int page, unsigned int row, unsigned int col, Direction dir, std::string str);
+        void erase(unsigned int page, unsigned int row, unsigned int col, Direction dir, unsigned int leng);
 
-        void show(unsigned int page, unsigned int row, unsigned int col, Direction dir, std::string str);
+        void show(unsigned int page);
 
-        std::string read(unsigned int page, unsigned int row, unsigned int col, Direction dir, std::string str);
+        string read(unsigned int page, unsigned int row, unsigned int col, Direction dir, unsigned int leng);
 
 
     }

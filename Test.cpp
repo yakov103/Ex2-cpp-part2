@@ -49,6 +49,10 @@ TEST_CASE("bad input"){
     CHECK_THROWS(note.write(100,99,51,Direction::Vertical,"XYZ")); // need to throw because overwrite
     note.erase(100,100,50,Direction::Horizontal,4);
     CHECK_THROWS(note.write(100,100,50,Direction::Horizontal,"ABCD")); // you cannot write where you delete
+    note.write(50,100,50,Direction::Horizontal,"yakov");
+    note.write(51,100,50,Direction::Vertical,"try");
+    CHECK_FALSE(note.read(50,100,50,Direction::Horizontal,5) == "yaoov");
+    CHECK_FALSE(note.read(51,100,50,Direction::Vertical,3) == "tri");
 
 
 }

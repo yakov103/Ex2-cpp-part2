@@ -53,6 +53,15 @@ TEST_CASE("bad input"){
     note.write(51,100,50,Direction::Vertical,"try");
     CHECK_FALSE(note.read(50,100,50,Direction::Horizontal,5) == "yaoov");
     CHECK_FALSE(note.read(51,100,50,Direction::Vertical,3) == "tri");
+    CHECK_THROWS(note.write(-100,100,50,Direction::Horizontal,"ABCD")); // no minus values
+    CHECK_THROWS(note.write(100,-100,50,Direction::Horizontal,"abcd")); // no minus values
+    CHECK_THROWS(note.write(100,100,-50,Direction::Horizontal,"rfvt")); // no minus values
+    CHECK_THROWS(note.read(100,100,-50,Direction::Horizontal,5)); // no minus values
+    CHECK_THROWS(note.read(100,100,50,Direction::Horizontal,-5)); // no minus values
+    CHECK_THROWS(note.erase(100,-100,50,Direction::Horizontal,5)); // no minus values
+    CHECK_THROWS(note.erase(100,100,50,Direction::Horizontal,-5)); // no minus values
+    CHECK_THROWS (note.show(-1)); // no minus values 
+
 
 
 }

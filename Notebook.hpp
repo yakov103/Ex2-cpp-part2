@@ -8,11 +8,10 @@ using namespace ariel;
 namespace ariel {
     class Notebook {
     public :
-        void write(unsigned int page, unsigned int row, unsigned int col, Direction dir, string str);
-        void erase(unsigned int page, unsigned int row, unsigned int col, Direction dir, unsigned int leng);
-        void show(unsigned int page);
-        string read(unsigned int page, unsigned int row, unsigned int col, Direction dir, unsigned int leng);
-
+        void write(int page, int row, int col, Direction dir, string str);
+        void erase(int page, int row, int col, Direction dir, int length);
+        string read(int page, int row,  int col, Direction dir,  int length);
+        void show(int page);
 
     };
 

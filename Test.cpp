@@ -62,6 +62,13 @@ TEST_CASE("bad input"){
     CHECK_THROWS(note.erase(100,100,50,Direction::Horizontal,-5)); // no minus values
     CHECK_THROWS (note.show(-1)); // no minus values 
 
+    CHECK_THROWS(note.read(100,100,99,Direction::Horizontal,5));// cannot do over 100 col
+    CHECK_THROWS(note.erase(100,100,99,Direction::Horizontal,5));// cannot do over 100 col 
+    CHECK_THROWS(note.read(50,100,0,Direction::Horizontal,101));// cannot do over 100 col  
+
+    CHECK_THROWS(note.read(-50,100,0,Direction::Horizontal,101));// mix case  
+    CHECK_THROWS(note.read(50,-100,99,Direction::Horizontal,3));// mix case  
+
 
 
 }

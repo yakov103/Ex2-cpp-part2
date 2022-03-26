@@ -112,7 +112,7 @@ namespace ariel {
             for ( int i = 0 ; i < length ; i++){ 
                 resulat = resulat+this->read(page,((int)row+i),col , Direction::Horizontal,1); 
             }
-        }
+        }// ts
         
 
 

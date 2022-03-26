@@ -27,7 +27,6 @@ namespace ariel {
     */
     void Notebook::write(int const & page, int const & row, int const & col, Direction dir, string const & str) {
         string t ; 
-
         if (this->notebook.find(page) == notebook.end()){ 
             map <int ,string> pageOfbook ;
             t = string (MAX_ROW_LEN,'_');

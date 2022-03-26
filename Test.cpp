@@ -37,7 +37,8 @@ TEST_CASE("good input"){
     CHECK(note.read(51,52,20,Direction::Horizontal,4)=="____");
     CHECK(note.read(51,50,21,Direction::Horizontal,5)=="estin");
     CHECK(note.read(51,50,20,Direction::Vertical,1)=="t");
-
+note.show(51); 
+note.show(100); 
 
 }
 

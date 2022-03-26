@@ -2,7 +2,7 @@
 #include "Direction.hpp"
 #include <string>
 #include <stdexcept>
-#include <unordered_map>
+#include <map>
 
 using namespace std;
 using namespace ariel;
@@ -10,7 +10,7 @@ using namespace ariel;
 
 namespace ariel {
     class Notebook {
-       unordered_map<int , unordered_map <int , string> > notebook ;  
+       map<int , map <int , string> > notebook ;  
     public :
         Notebook(); 
         void write(int const & page, int const & row, int const & col, Direction dir, string const & str);

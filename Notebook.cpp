@@ -1,7 +1,5 @@
 #include "Notebook.hpp"
 #include <map> 
-#include <unordered_map>
-
 
 
 constexpr unsigned int MAX_ROW_LEN = 100;
@@ -11,7 +9,7 @@ namespace ariel {
 
 
     Notebook::Notebook(){
-     unordered_map<int , unordered_map <int , string> > notebook ;  
+     map<int , map <int , string> > notebook ;  
      this->notebook=notebook; 
 
     }
@@ -31,14 +29,15 @@ namespace ariel {
         string t ; 
 
         if (this->notebook.find(page) == notebook.end()){ 
-            unordered_map <int ,string> pageOfbook ;
+            map <int ,string> pageOfbook ;
             t = "____________________________________________________________________________________________________";
             pageOfbook.insert(pair<int ,string>(row,t)); 
-            this->notebook.insert(pair<int,unordered_map<int,string> >(page,pageOfbook));
+            this->notebook.insert(pair<int,map<int,string> >(page,pageOfbook));
         }
         else { 
             if (this->notebook.at(page).find(row) == this->notebook.at(page).end()){
-          
+            t = "____________________________________________________________________________________________________";  
+            this->notebook.at(page).insert(pair<int,string>(row,t)); 
             }
          
             
@@ -71,7 +70,7 @@ namespace ariel {
     }
 
     void Notebook::show(int page) {
-        unordered_map <int ,string> rows = notebook.at(page); 
+        map <int ,string> rows = notebook.at(page); 
         for(auto row : rows){
         cout << row.second << endl ; 
         }

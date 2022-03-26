@@ -30,13 +30,13 @@ namespace ariel {
 
         if (this->notebook.find(page) == notebook.end()){ 
             map <int ,string> pageOfbook ;
-            t = string (100,'_');
+            t = string (MAX_ROW_LEN,'_');
             pageOfbook.insert(pair<int ,string>(row,t)); 
             this->notebook.insert(pair<int,map<int,string> >(page,pageOfbook));
         }
         else { 
             if (this->notebook.at(page).find(row) == this->notebook.at(page).end()){
-            t = string (100,'_'); 
+            t = string (MAX_ROW_LEN,'_'); 
             this->notebook.at(page).insert(pair<int,string>(row,t)); 
             }
          
@@ -62,15 +62,15 @@ namespace ariel {
     }
     void Notebook::erase( int page, int row, int col, Direction dir, int length) {
         string t ; 
-          if (this->notebook.find(page) == notebook.end()){ 
+        if (this->notebook.find(page) == notebook.end()){ 
             map <int ,string> pageOfbook ;
-            t = string (100,'_');
+            t = string (MAX_ROW_LEN,'_');
             pageOfbook.insert(pair<int ,string>(row,t)); 
             this->notebook.insert(pair<int,map<int,string> >(page,pageOfbook));
         }
         else { 
             if (this->notebook.at(page).find(row) == this->notebook.at(page).end()){
-            t = string (100,'_'); 
+            t = string (MAX_ROW_LEN,'_'); 
             this->notebook.at(page).insert(pair<int,string>(row,t)); 
             }
          
@@ -84,7 +84,7 @@ namespace ariel {
         this->notebook.at(page).at(row) = t ;
        // cout << this->notebook.at(page).at(row) << endl; 
         }
-        else { 
+        if (dir == Direction::Vertical) { 
          for (int i = 0 ; i < (int)length ; i++){  
             this->erase(page,((int)row+i),col,Direction::Horizontal,1);
         }
@@ -103,14 +103,14 @@ namespace ariel {
             }
             else {
                  for (int i = 0 ; i < length ; i ++){ 
-            resulat = resulat + "_"; 
+            resulat += "_"; 
         }
             }
 
         }
         else { 
             for ( int i = 0 ; i < length ; i++){ 
-                resulat = resulat+this->read(page,((int)row+i),col , Direction::Horizontal,1); 
+                resulat += this->read(page,((int)row+i),col , Direction::Horizontal,1); 
             }
         }// ts
         
@@ -119,7 +119,7 @@ namespace ariel {
     }
     else { 
         for (int i = 0 ; i < length ; i ++){ 
-            resulat = resulat + "_"; 
+            resulat += "_"; 
         }
     }
     
@@ -128,7 +128,7 @@ namespace ariel {
 
     void Notebook::show(int page) {
         map <int ,string> rows = notebook.at(page); 
-        for(auto row : rows){
+        for(auto const & row : rows){
         cout << row.second << endl ; 
         }
     }

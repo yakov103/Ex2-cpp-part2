@@ -37,15 +37,27 @@ namespace ariel {
             this->notebook.insert(pair<int,unordered_map<int,string> >(page,pageOfbook));
         }
         else { 
-            t = this->notebook.at(page).at(row);
+            if (this->notebook.at(page).find(row) == this->notebook.at(page).end()){
+          
+            }
+         
+            
         }
+           t = this->notebook.at(page).at(row);
 
         if (dir == Direction::Horizontal){
         for (unsigned int i = ((unsigned int)col) ; i < col+((int)str.size()) ; i++){ 
               t.at(i)=str.at(i-((unsigned int)col)); 
         }
         this->notebook.at(page).at(row) = t ;
-        cout << this->notebook.at(page).at(row) << endl; 
+       // cout << this->notebook.at(page).at(row) << endl; 
+        }
+        else { 
+         for (int i = 0 ; i < (int)str.size() ; i++){ 
+
+            string temp (1,str.at((unsigned int )i));
+            this->write(page,((int)row+i),col,Direction::Horizontal,temp);
+        }
         }
         
     
@@ -59,6 +71,10 @@ namespace ariel {
     }
 
     void Notebook::show(int page) {
+        unordered_map <int ,string> rows = notebook.at(page); 
+        for(auto row : rows){
+        cout << row.second << endl ; 
+        }
     }
 
 

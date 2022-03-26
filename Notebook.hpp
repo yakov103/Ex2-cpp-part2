@@ -13,7 +13,7 @@ namespace ariel {
        unordered_map<int , unordered_map <int , string> > notebook ;  
     public :
         Notebook(); 
-        void write(int page, int row, int col, Direction dir, string const & str);
+        void write(int const & page, int const & row, int const & col, Direction dir, string const & str);
         void erase(int page, int row, int col, Direction dir, int length);
         string read(int page, int row,  int col, Direction dir,  int length);
         void show(int page);

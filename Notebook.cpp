@@ -27,7 +27,7 @@ namespace ariel {
 
 
     */
-    void Notebook::write(int page, int row, int col, Direction dir, string const & str) {
+    void Notebook::write(int const & page, int const & row, int const & col, Direction dir, string const & str) {
         string t ; 
 
         if (this->notebook.find(page) == notebook.end()){ 
@@ -41,10 +41,8 @@ namespace ariel {
         }
 
         if (dir == Direction::Horizontal){
-        int strLengthOfWord = str.size();
-        unsigned int colCopy = (unsigned int ) col ; 
-        for (unsigned int i = colCopy ; i < col+strLengthOfWord ; i++){ 
-              t.at(i)=str.at(i-colCopy); 
+        for (unsigned int i = ((unsigned int)col) ; i < col+((int)str.size()) ; i++){ 
+              t.at(i)=str.at(i-((unsigned int)col)); 
         }
         this->notebook.at(page).at(row) = t ;
         cout << this->notebook.at(page).at(row) << endl; 

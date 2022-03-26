@@ -28,19 +28,29 @@ namespace ariel {
 
     */
     void Notebook::write(int page, int row, int col, Direction dir, string const & str) {
+        string t ; 
+
+        if (this->notebook.find(page) == notebook.end()){ 
+            unordered_map <int ,string> pageOfbook ;
+            t = "____________________________________________________________________________________________________";
+            pageOfbook.insert(pair<int ,string>(row,t)); 
+            this->notebook.insert(pair<int,unordered_map<int,string> >(page,pageOfbook));
+        }
+        else { 
+            t = this->notebook.at(page).at(row);
+        }
+
         if (dir == Direction::Horizontal){
-        unordered_map <int ,string> pageOfbook ;
-        string t = "____________________________________________________________________________________________________";
         int strLengthOfWord = str.size();
         unsigned int colCopy = (unsigned int ) col ; 
         for (unsigned int i = colCopy ; i < col+strLengthOfWord ; i++){ 
               t.at(i)=str.at(i-colCopy); 
         }
-        pageOfbook.insert(pair<int ,string>(row,t)); 
-        cout << pageOfbook.at(row) << endl; 
-       this->notebook.insert(pair<int,unordered_map<int,string> >(page,pageOfbook));
+        this->notebook.at(page).at(row) = t ;
         cout << this->notebook.at(page).at(row) << endl; 
         }
+        
+    
     }
     void Notebook::erase( int page, int row, int col, Direction dir, int length) {
 
